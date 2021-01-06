@@ -1,4 +1,4 @@
-import { login, logout, getInfo, refresh } from '@/api/user'
+import { login, logout, getMe, refresh } from '@/api/user'
 import { getToken, setToken, removeToken, setTokenExpireTime, removeTokenExpireTime } from '@/utils/auth'
 import router, { resetRouter } from '@/router'
 
@@ -49,8 +49,8 @@ const actions = {
   // get user info
   getMe({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo(state.token).then(response => {
-        const { data } = response
+      getMe().then(response => {
+        const { data } = response.data
 
         if (!data) {
           reject('Verification failed, please Login again.')
