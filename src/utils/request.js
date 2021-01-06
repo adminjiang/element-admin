@@ -75,11 +75,13 @@ instance.interceptors.request.use(config => {
 instance.interceptors.response.use(response => {
   return response
 }, error => {
-  Message({
-    message: error.response.data.message,
-    type: 'error',
-    duration: 5 * 1000
-  })
+  if (error.response.status !== 401) {
+    Message({
+      message: error.response.data.message,
+      type: 'error',
+      duration: 5 * 1000
+    })
+  }
   return Promise.reject(error)
 })
 
