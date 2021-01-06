@@ -48,9 +48,9 @@ instance.interceptors.request.use(config => {
         }).catch(error => {
           removeToken()
           removeTokenExpireTime()
-          MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
-            confirmButtonText: 'Re-Login',
-            cancelButtonText: 'Cancel',
+          MessageBox.confirm('你已经注销，你可以取消继续留在这个页面上，或者重新登录。', '确认登出', {
+            confirmButtonText: '重新登录',
+            cancelButtonText: '取消',
             type: 'warning'
           }).then(() => {
             location.reload()
